@@ -6,6 +6,7 @@ import UdaciSlider from './UdaciSlider'
 import DateHeader from './DateHeader'
 import TextButton from './TextButton'
 import { Ionicons } from '@expo/vector-icons'
+import { submitEntry, removeEntry } from '../utils/api'
 
 function SubmitBtn ({ onPress }) {
   return (
@@ -63,8 +64,8 @@ class AddEntry extends Component {
     //
     // TODO Navigate to Home
     //
-    // TODO Save to DB
-    //
+    // DONE Save to DB
+    submitEntry({ entry, key })
     // TODO Clear Local Notification
     this.setState(() => ({
       run: 0,
@@ -79,7 +80,8 @@ class AddEntry extends Component {
     const key = timeToString()
     // TODO Update Redux
     // TODO Route to home
-    // TODO Update DB
+    // DONE Update DB
+    removeEntry(key)
   }
 
   render() {
