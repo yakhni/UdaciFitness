@@ -9,7 +9,7 @@ import middleware from './middleware'
 export default function App() {
   return (
     <Provider store={createStore(reducer, middleware)}>
-      <View>
+      <View style={{flex: 1}}>
         <AddEntry />
       </View>
     </Provider>
