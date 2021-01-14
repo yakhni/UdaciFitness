@@ -7,6 +7,7 @@ import { fetchCalendarResults } from '../utils/api'
 import {Agenda as UdaciFitnessCalendar } from 'react-native-calendars'
 import { white } from '../utils/colors'
 import DateHeader from './DateHeader'
+import MetricCard from './MetricCard'
 
 class History extends Component {
   componentDidMount () {
@@ -33,7 +34,7 @@ class History extends Component {
           </View>
         : <TouchableOpacity
             onPress={() => console.log('Pressed!')} >
-              <Text>{JSON.stringify(metrics)}</Text>
+              <MetricCard date={formattedDate} metrics={metrics} />
           </TouchableOpacity>}
     </View>
   )
