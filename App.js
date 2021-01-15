@@ -6,6 +6,7 @@ import reducer from './reducers'
 import middleware from './middleware'
 import { NavigationContainer } from '@react-navigation/native';
 import UdaciStatusBar from './components/UdaciStatusBar'
+import RootStack from './components/Stack'
 
 export default function App() {
   return (
@@ -13,10 +14,7 @@ export default function App() {
       <NavigationContainer>
         <UdaciStatusBar/>
         <View style={{flex: 1}}>
-          <Tab.Navigator {...TabNavigatorConfig} >
-            <Tab.Screen {...RouteConfigs['History']} />
-            <Tab.Screen {...RouteConfigs['AddEntry']} />
-          </Tab.Navigator>
+          <RootStack />
         </View>
       </NavigationContainer>
     </Provider>
