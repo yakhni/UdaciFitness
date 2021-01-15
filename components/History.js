@@ -11,7 +11,10 @@ import MetricCard from './MetricCard'
 // import { AppLoading } from 'expo-app-loading'
 
 class History extends Component {
-  // state = {
+  state = {
+      selectedDate: new Date().toISOString().slice(0,10),
+  }
+    // state = {
   //   ready: false
   // }
 
@@ -29,7 +32,8 @@ class History extends Component {
       })
       // .then(() => this.setState(() => ({ready: true})))
   }
-  renderItem = ({ today, ...metrics }, formattedDate, key) => (
+  renderItem = (key, { today, ...metrics }) => {
+    return (
     <View>
       {today
         ? <View>
@@ -42,8 +46,10 @@ class History extends Component {
               <MetricCard date={formattedDate} metrics={metrics} />
           </TouchableOpacity>}
     </View>
-  )
-  renderEmptyDate(formattedDate) {
+    )
+  }
+
+  renderEmptyDate() {
     return (
       <View style={styles.item}>
         <Text style={styles.noDataText}>
@@ -52,9 +58,15 @@ class History extends Component {
       </View>
     )
   }
+  onDayPress = (day) => {
+    this.setState({
+      selectedDate: day.dateString
+    })
+  }
 
   render() {
     // const { ready } = this.state
+    const { selectedDate } = this.state
     const { entries } = this.props
 
     // if (ready === false) {
@@ -63,8 +75,9 @@ class History extends Component {
     return (
       <UdaciFitnessCalendar
         items={entries}
-        renderItem={this.renderItem}
+        renderItem={(item) => this.renderItem(selectedDate, item)}
         renderEmptyDate={this.renderEmptyDate}
+        onDayPress={this.onDayPress}
       />
     )
   }
