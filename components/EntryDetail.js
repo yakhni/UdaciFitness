@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { connect } from 'react-redux'
-
 import MetricCard from './MetricCard'
 import { white } from '../utils/colors'
 class EntryDetail extends Component {
@@ -18,7 +17,7 @@ class EntryDetail extends Component {
     const day = entryId.slice(8)
 
     this.props.navigation.setOptions({
-        title: `${month}/${day}/${year}`
+      title: `${month}/${day}/${year}`
     })
   }
 

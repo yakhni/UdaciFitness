@@ -6,17 +6,12 @@ import { timeToString, getDailyReminderValue } from '../utils/helpers'
 import { fetchCalendarResults } from '../utils/api'
 import {Agenda as UdaciFitnessCalendar } from 'react-native-calendars'
 import { white } from '../utils/colors'
-// import DateHeader from './DateHeader'
 import MetricCard from './MetricCard'
-// import { AppLoading } from 'expo-app-loading'
 
 class History extends Component {
   state = {
       selectedDate: new Date().toISOString().slice(0,10),
   }
-    // state = {
-  //   ready: false
-  // }
 
   componentDidMount () {
     const { dispatch } = this.props
@@ -30,7 +25,6 @@ class History extends Component {
           }))
         }
       })
-      // .then(() => this.setState(() => ({ready: true})))
   }
   renderItem = (key, { today, ...metrics }) => {
     return (
@@ -70,9 +64,6 @@ class History extends Component {
     const { selectedDate } = this.state
     const { entries } = this.props
 
-    // if (ready === false) {
-    //   return <AppLoading />
-    // }
     return (
       <UdaciFitnessCalendar
         items={entries}
@@ -83,6 +74,7 @@ class History extends Component {
     )
   }
 }
+
 const styles = StyleSheet.create({
   item: {
     backgroundColor: white,
