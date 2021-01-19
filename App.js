@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { View } from 'react-native'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
@@ -8,15 +8,21 @@ import { NavigationContainer } from '@react-navigation/native';
 import UdaciStatusBar from './components/UdaciStatusBar'
 import RootStack from './components/Stack'
 
-export default function App() {
-  return (
-    <Provider store={createStore(reducer, middleware)}>
-      <NavigationContainer>
-        <UdaciStatusBar/>
-        <View style={{flex: 1}}>
-          <RootStack />
-        </View>
-      </NavigationContainer>
-    </Provider>
-  )
+
+class App extends Component {
+
+  render() {
+    return (
+      <Provider store={createStore(reducer, middleware)}>
+        <NavigationContainer>
+          <UdaciStatusBar/>
+          <View style={{flex: 1}}>
+            <RootStack />
+          </View>
+        </NavigationContainer>
+      </Provider>
+    )
+  }
 }
+
+export default App
