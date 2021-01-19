@@ -10,6 +10,9 @@ import RootStack from './components/Stack'
 
 
 class App extends Component {
+  componentDidMount() {
+    setLocalNotification()
+  }
 
   render() {
     return (
